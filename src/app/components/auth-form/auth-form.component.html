@@ -1,0 +1,50 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Sign In</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" formControlName="name" required />
+          <mat-error *ngIf="this.authForm.get('name').hasError('required')">
+            Required field</mat-error
+          >
+          <mat-error *ngIf="this.authForm.get('name').hasError('minlength')">
+            The minimum length for this field is
+            {{ authForm.get("name").errors.minlength.requiredLength }}
+            characters</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            required
+          />
+          <mat-error *ngIf="this.authForm.get('password').hasError('required')">
+            Required field</mat-error
+          >
+          <mat-error
+            *ngIf="this.authForm.get('password').hasError('minlength')"
+          >
+            The minimum length for this field is
+            {{ authForm.get("password").errors.minlength.requiredLength }}
+            characters</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <button
+        mat-stroked-button
+        color="accent"
+        class="btn-block"
+        [disabled]="authForm.invalid"
+      >
+        Sign-in
+      </button>
+    </form>
+  </mat-card>
+</div>
