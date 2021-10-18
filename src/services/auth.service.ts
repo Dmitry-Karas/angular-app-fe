@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Credentials } from '../app/credentials';
+
+export interface Credentials {
+  name: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root',
